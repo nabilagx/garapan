@@ -443,26 +443,58 @@
     </div>
   </footer>
 
-  <!-- Auth Modals (Dummy) -->
-  <div id="modalBackdrop" class="fixed inset-0 bg-black/40 hidden"></div>
+  <!-- Auth Modals with Mascot -->
+  <div id="modalBackdrop" class="fixed inset-0 bg-black/40 hidden z-[50]"></div>
+
   <div id="modalLogin" class="fixed inset-0 hidden items-center justify-center p-4 z-[60]">
-    <div class="w-full max-w-md card bg-white shadow-soft border border-slate-100 p-6 relative">
+    <div class="w-full max-w-md card bg-white shadow-soft border border-slate-100 p-6 relative flex flex-col items-center text-center">
       <button onclick="closeModal()" class="absolute right-3 top-3 text-slate-400 hover:text-slate-600">✕</button>
-      <h3 class="text-xl font-bold">Masuk</h3>
+      <div class="relative w-[120px] h-[120px] -mt-4 mb-4 flex items-center justify-center">
+        <svg id="circle-mascot-login" width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));">
+            <defs>
+                <linearGradient id="circle-gradient-login" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#circle-gradient-login)" stroke="#052e1b" stroke-width="2"/>
+            <circle id="eye-login-1" cx="35" cy="45" r="10" fill="white" stroke="#052e1b" stroke-width="2"/>
+            <circle id="pupil-login-1" cx="35" cy="45" r="4" fill="black"/>
+            <circle id="eye-login-2" cx="65" cy="45" r="10" fill="white" stroke="#052e1b" stroke-width="2"/>
+            <circle id="pupil-login-2" cx="65" cy="45" r="4" fill="black"/>
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold mt-4">Masuk</h3>
       <p class="text-slate-600 text-sm mt-1">Demo sederhana untuk presentasi.</p>
-      <form onsubmit="event.preventDefault(); alert('Login dummy berhasil.');" class="mt-6 space-y-3">
+      <form onsubmit="event.preventDefault(); alert('Login dummy berhasil.');" class="mt-6 space-y-3 w-full">
         <input required type="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"/>
         <input required type="password" placeholder="Password" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"/>
         <button class="w-full px-5 py-3 rounded-xl btn-primary font-semibold">Masuk</button>
       </form>
     </div>
   </div>
+
   <div id="modalRegister" class="fixed inset-0 hidden items-center justify-center p-4 z-[60]">
-    <div class="w-full max-w-md card bg-white shadow-soft border border-slate-100 p-6 relative">
+    <div class="w-full max-w-md card bg-white shadow-soft border border-slate-100 p-6 relative flex flex-col items-center text-center">
       <button onclick="closeModal()" class="absolute right-3 top-3 text-slate-400 hover:text-slate-600">✕</button>
-      <h3 class="text-xl font-bold">Daftar</h3>
+      <div class="relative w-[120px] h-[120px] -mt-4 mb-4 flex items-center justify-center">
+        <svg id="circle-mascot-register" width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));">
+            <defs>
+                <linearGradient id="circle-gradient-register" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#circle-gradient-register)" stroke="#052e1b" stroke-width="2"/>
+            <circle id="eye-register-1" cx="35" cy="45" r="10" fill="white" stroke="#052e1b" stroke-width="2"/>
+            <circle id="pupil-register-1" cx="35" cy="45" r="4" fill="black"/>
+            <circle id="eye-register-2" cx="65" cy="45" r="10" fill="white" stroke="#052e1b" stroke-width="2"/>
+            <circle id="pupil-register-2" cx="65" cy="45" r="4" fill="black"/>
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold mt-4">Daftar</h3>
       <p class="text-slate-600 text-sm mt-1">Buat akun untuk mulai bergabung.</p>
-      <form onsubmit="event.preventDefault(); alert('Akun dummy dibuat.');" class="mt-6 space-y-3">
+      <form onsubmit="event.preventDefault(); alert('Akun dummy dibuat.');" class="mt-6 space-y-3 w-full">
         <input required type="text" placeholder="Nama" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"/>
         <input required type="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"/>
         <input required type="password" placeholder="Password" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"/>
@@ -478,8 +510,11 @@
     const registerM = document.getElementById('modalRegister');
     const btnLogin = document.getElementById('btnLogin');
     const btnRegister = document.getElementById('btnRegister');
+    const mobileBtnLogin = document.getElementById('mobile-btnLogin');
+    const mobileBtnRegister = document.getElementById('mobile-btnRegister');
 
     function openModal(which){
+      closeMobileMenu();
       backdrop.classList.remove('hidden');
       const el = which === 'login' ? login : registerM;
       el.classList.remove('hidden');
@@ -491,7 +526,49 @@
     }
     btnLogin.addEventListener('click', ()=>openModal('login'));
     btnRegister.addEventListener('click', ()=>openModal('register'));
+    mobileBtnLogin.addEventListener('click', ()=>openModal('login'));
+    mobileBtnRegister.addEventListener('click', ()=>openModal('register'));
     backdrop.addEventListener('click', closeModal);
+
+    // ===== Mascot Eye Tracking =====
+    const eyeLogin1 = document.getElementById('eye-login-1');
+    const pupilLogin1 = document.getElementById('pupil-login-1');
+    const eyeLogin2 = document.getElementById('eye-login-2');
+    const pupilLogin2 = document.getElementById('pupil-login-2');
+    const eyeRegister1 = document.getElementById('eye-register-1');
+    const pupilRegister1 = document.getElementById('pupil-register-1');
+    const eyeRegister2 = document.getElementById('eye-register-2');
+    const pupilRegister2 = document.getElementById('pupil-register-2');
+
+    function trackPupils(event, eye1, pupil1, eye2, pupil2) {
+        if (!eye1 || !pupil1 || !eye2 || !pupil2) return;
+        const rect1 = eye1.getBoundingClientRect();
+        const rect2 = eye2.getBoundingClientRect();
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        const eyeX1 = rect1.left + rect1.width / 2;
+        const eyeY1 = rect1.top + rect1.height / 2;
+        const eyeX2 = rect2.left + rect2.width / 2;
+        const eyeY2 = rect2.top + rect2.height / 2;
+
+        const angle1 = Math.atan2(mouseY - eyeY1, mouseX - eyeX1);
+        const angle2 = Math.atan2(mouseY - eyeY2, mouseX - eyeX2);
+        const maxMove = 5; 
+
+        const pupilX1 = maxMove * Math.cos(angle1);
+        const pupilY1 = maxMove * Math.sin(angle1);
+        const pupilX2 = maxMove * Math.cos(angle2);
+        const pupilY2 = maxMove * Math.sin(angle2);
+
+        pupil1.setAttribute('cx', 35 + pupilX1);
+        pupil1.setAttribute('cy', 45 + pupilY1);
+        pupil2.setAttribute('cx', 65 + pupilX2);
+        pupil2.setAttribute('cy', 45 + pupilY2);
+    }
+    
+    login.addEventListener('mousemove', (e) => trackPupils(e, eyeLogin1, pupilLogin1, eyeLogin2, pupilLogin2));
+    registerM.addEventListener('mousemove', (e) => trackPupils(e, eyeRegister1, pupilRegister1, eyeRegister2, pupilRegister2));
 
     // Fade in dashboard on load
     window.addEventListener('load', () => {
